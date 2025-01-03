@@ -77,8 +77,7 @@ const products = [
 const productsWrapper = document.getElementById("products-wrapper");
 const checkboxes = document.querySelector(".check");
 const filtersContainer = document.getElementById("filters-container");
-const searchInput = document.getElementById("products-wrapper");
-const productsWrapper = document.getElementById("search);
+const searchInput = document.getElementById("search");
 const cartCount = document.getElementById("cart-count");
 
 // Init cart item count
@@ -89,16 +88,17 @@ const productElements = [];
 
 // Loop over products and create an element
 products.forEach((product) => {
-    const productElement = document.createElement('div');
+  const productElement = document.createElement("div");
 
-    productElement.className = 'item space-y-2';
+  productElement.className = "item space-y-2";
 
-    productElement.innerHTML = `<div
+  productElement.innerHTML = `
+          <div
             class="bg-grey-100 flex justify-center relative overflow-hidden group cursor-pointer border rounded-xl"
           >
             <img
-              src="images/playstation_5.png"
-              alt=""
+              src="${product.url}"
+              alt="${product.name}"
               class="w-full h-full object-cover"
             />
             <button
@@ -107,7 +107,11 @@ products.forEach((product) => {
               Add To Cart
             </button>
           </div>
-          <p class="text-xl">Playstation 5</p>
-          <strong>${}</strong>
-    `;
+          <p class="text-xl">${product.name}</p>
+          <strong>${product.price.toLocaleString()}</strong>`;
+
+  productElements.push(productElement);
+  productsWrapper.appendChild(productElement);
 });
+
+// Create product element
